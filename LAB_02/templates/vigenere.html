@@ -3,19 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Caesar Cipher</title>
+    <title>Vigenère Cipher</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
     />
   </head>
-
   <body>
     <div class="container">
       <table class="table">
         <tr>
           <td style="text-align: center; font-weight: bold; font-size: 25px">
-            CAESAR CIPHER
+            VIGENÈRE CIPHER
           </td>
         </tr>
         <tr>
@@ -23,7 +22,7 @@
         </tr>
         <tr>
           <td>
-            <form method="POST" action="/caesar/encrypt">
+            <form method="POST" action="/vigenere/encrypt">
               <div class="mb-3">
                 <label class="form-label">Plain text: </label>
                 <input
@@ -38,7 +37,7 @@
               <div class="mb-3">
                 <label class="form-label">Key: </label>
                 <input
-                  type="number"
+                  type="text"
                   class="form-control"
                   name="inputKeyPlain"
                   placeholder="Input Key"
@@ -54,7 +53,7 @@
         </tr>
         <tr>
           <td>
-            <form method="POST" action="/caesar/decrypt">
+            <form method="POST" action="/vigenere/decrypt">
               <div class="mb-3">
                 <label class="form-label">Cipher text: </label>
                 <input
@@ -68,7 +67,7 @@
               <div class="mb-3">
                 <label class="form-label">Key:</label>
                 <input
-                  type="number"
+                  type="text"
                   class="form-control"
                   name="inputKeyCipher"
                   placeholder="Input Key"
