@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>THBMTTNC - NGUYỄN NGỌC TRINH</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- GSAP CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+    <style>
+      body {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .container {
+        background: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        max-width: 600px;
+        margin: auto;
+      }
+      .logo {
+        max-width: 80%;
+        margin-bottom: 10px;
+        transition: transform 0.3s ease;
+      }
+      .logo:hover {
+        transform: scale(1.05);
+      }
+      h4,
+      h5 {
+        text-align: center;
+        margin: 0;
+      }
+      h4 {
+        color: #2c3e50;
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+      h5 {
+        color: #6c757d;
+        margin-bottom: 25px;
+      }
+      .section-title {
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-top: 20px;
+        margin-bottom: 15px;
+        color: #2c3e50;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        margin: 12px 0;
+      }
+      .cipher-btn {
+        display: block;
+        padding: 12px 20px;
+        background: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 1.1rem;
+        transition: background 0.3s ease, transform 0.3s ease;
+      }
+      .cipher-btn:hover {
+        background: #0056b3;
+        transform: translateY(-3px);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container text-center">
+      <!-- Logo -->
+      <img
+        src="https://file1.hutech.edu.vn/file/editor/homepage/stories/hinh34/logo%20CMYK-01.png"
+        alt="HUTECH Logo 1"
+        class="logo mx-auto d-block"
+      />
+      <img
+        src="https://file1.hutech.edu.vn/file/editor/homepage1/449223-imgpsh_fullsize_anim-6.jpg"
+        alt="HUTECH Logo 2"
+        class="logo mx-auto d-block"
+      />
+
+      <!-- Thông tin sinh viên -->
+      <h4>BÀI THỰC HÀNH KẾT THÚC MÔN HỌC : THBMTTNC</h4>
+      <h5>NGUYỄN NGỌC TRINH 2280603400 GLHF !</h5>
+
+      <!-- Danh sách giao diện Qt -->
+      <div class="section-title">🖥️ MỞ GIAO DIỆN MÃ HÓA BẰNG QT</div>
+      <ul>
+        <li>
+          <a href="#" onclick="openQtForm('/open/caesar')" class="cipher-btn"
+            >Caesar Cipher (Qt)</a
+          >
+        </li>
+        <li>
+          <a href="#" onclick="openQtForm('/open/vigenere')" class="cipher-btn"
+            >Vigenère Cipher (Qt)</a
+          >
+        </li>
+        <li>
+          <a href="#" onclick="openQtForm('/open/railfence')" class="cipher-btn"
+            >Rail Fence Cipher (Qt)</a
+          >
+        </li>
+        <li>
+          <a href="#" onclick="openQtForm('/open/playfair')" class="cipher-btn"
+            >Playfair Cipher (Qt)</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- GSAP animation + Qt launcher -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        gsap.from(".container", {
+          opacity: 0,
+          y: 50,
+          duration: 1,
+          ease: "power2.out",
+        });
+        gsap.from(".logo", {
+          opacity: 0,
+          scale: 0.5,
+          duration: 0.8,
+          delay: 0.2,
+          ease: "back.out(1.7)",
+        });
+        gsap.from("h4, h5, .section-title", {
+          opacity: 0,
+          y: 20,
+          duration: 0.8,
+          delay: 0.4,
+          stagger: 0.2,
+          ease: "power2.out",
+        });
+        gsap.from(".cipher-btn", {
+          opacity: 0,
+          x: -20,
+          duration: 0.6,
+          delay: 0.6,
+          stagger: 0.1,
+          ease: "power2.out",
+        });
+
+        document.querySelectorAll(".cipher-btn").forEach((btn) => {
+          btn.addEventListener("mouseenter", () => {
+            gsap.to(btn, { scale: 1.05, duration: 0.3, ease: "power1.out" });
+          });
+          btn.addEventListener("mouseleave", () => {
+            gsap.to(btn, { scale: 1, duration: 0.3, ease: "power1.out" });
+          });
+        });
+      });
+
+      // Không hiện alert, chỉ gọi backend mở Qt
+      function openQtForm(url) {
+        fetch(url).catch(() => {
+          console.error("Không thể gọi Qt form");
+        });
+      }
+    </script>
+  </body>
+</html>
